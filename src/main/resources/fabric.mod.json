@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "id": "tbplugin",
+  "version": "${version}",
+  "name": "TBPlugin",
+  "description": "Simple server utility",
+  "authors": [
+    "magistermaks"
+  ],
+  "contact": {
+    "website": "darktree.net"
+  },
+  "license": "MIT",
+  "environment": "*",
+  "entrypoints": {
+    "server": [
+      "net.darktree.tbplugin.Entry"
+    ]
+  },
+  "mixins": [
+    "tbplugin.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.11.2",
+    "fabric": ">=0.30.0",
+    "minecraft": "1.16.5"
+  }
+}
