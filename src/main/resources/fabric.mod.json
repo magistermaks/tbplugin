@@ -11,6 +11,7 @@
     "website": "darktree.net"
   },
   "license": "MIT",
+  "icon": "assets/tbplugin/icon.png",
   "environment": "*",
   "entrypoints": {
     "server": [
