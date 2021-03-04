@@ -10,8 +10,12 @@ public class TimeFreeze {
 
     private static boolean apply = true;
 
+    // This is little messy but it's good enough
+    // WARNING: it resets doDayLightCycle & doWeatherCycle game rules when enabled
     public static void init() {
         if( Entry.freezeEmpty ) {
+
+            // enable timeFreeze if the last player is leaving
             ServerPlayConnectionEvents.DISCONNECT.register((handler, server) -> {
                 if( server.getCurrentPlayerCount() <= 1 ) {
                     Entry.LOGGER.info("Last player left the game, entering sleep mode...");
@@ -19,10 +23,10 @@ public class TimeFreeze {
                 }
             });
 
-            ServerPlayConnectionEvents.JOIN.register((handler, sender, server) -> {
-                set(server, true);
-            });
+            // disable time freeze on player join
+            ServerPlayConnectionEvents.JOIN.register((handler, sender, server) -> set(server, true));
 
+            // check server status after startup
             ServerTickEvents.START_SERVER_TICK.register(server -> {
                 if( apply ) {
                     apply = false;

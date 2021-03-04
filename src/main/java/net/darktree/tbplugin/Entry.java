@@ -32,7 +32,11 @@ public class Entry implements DedicatedServerModInitializer {
     @Override
     public void onInitializeServer() {
         LOGGER.info( "TBPlugin configuration: loadSpawn=" + loadSpawn + ", tpsCommand=" + tpsCommand + ", freezeEmpty=" + freezeEmpty );
+
+        // adds /tps if enabled
         Commands.init();
+
+        // adds timeFreeze if enabled
         TimeFreeze.init();
     }
 
